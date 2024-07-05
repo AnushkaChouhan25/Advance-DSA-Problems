@@ -24,3 +24,9 @@ Feel free to fork this repository, submit issues, and create pull requests. If y
 Join me in this journey✌️and let's master these challenging DSA topics together. If you have any questions or need specific solutions, leave a comment or reach out.
 
 Happy Coding!❤️👩‍💻
+
+
+##Glimpse of sheet
+link - https://docs.google.com/spreadsheets/d/1Q3XGu-rtPsOdGgZpEkfKmFb_OV0xp67PfPZ_P0rSP8M/edit?gid=0#gid=0
+![Screenshot 2024-07-06 005547](https://github.com/AnushkaChouhan25/Advance-DSA-Problems/assets/157525924/1ae25138-ad12-4321-b490-b80e07b12868)
+
