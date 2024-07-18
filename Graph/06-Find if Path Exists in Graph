@@ -1,0 +1,26 @@
+class Solution {
+    public boolean validPath(int n, int[][] edges, int s, int d) {
+        boolean[] vis= new boolean[n];
+        return helper(edges, vis, s,d);
+    }
+    public boolean helper(int [][]edges, boolean[] vis, int s, int d){
+        if(s == d) return true;
+
+        vis[s] =  true;
+
+        for (int i = 0; i < edges.length; i++) {
+            int u = edges[i][0];
+            int v = edges[i][1];
+            if (u == s && !vis[v]) {
+                if (helper(edges, vis, v, d)) {
+                    return true;
+                }
+            } else if (v == s && !vis[u]) {
+                if (helper(edges, vis, u, d)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
