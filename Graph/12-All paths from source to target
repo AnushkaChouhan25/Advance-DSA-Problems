@@ -1,0 +1,23 @@
+class Solution {
+    public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+       List<List<Integer>> list = new ArrayList<>();
+       List<Integer> li =  new ArrayList<>();
+       li.add(0);
+       Utilfn(graph, list, li, 0);
+
+       return list; 
+    }
+
+    public void Utilfn(int [][]arr, List<List<Integer>> list, List<Integer> li, int curr){
+        if(arr.length-1 == curr){
+            list.add(new ArrayList<Integer>(li));
+            return;
+        }
+        for(int i : arr[curr]){
+            li.add(i);
+
+            Utilfn(arr, list, li, i);
+            li.remove(li.size()-1);
+        }
+    }
+}

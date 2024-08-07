@@ -1,0 +1,34 @@
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int color)  {
+        if(image == null || image.length == 0) return image;
+
+        int rows = image.length;
+        int cols = image[0].length;
+        Queue<int[]> que = new LinkedList<>();
+        que.offer(new int[]{sr, sc});
+        int startcolor = image[sr][sc];
+        image[sr][sc] = color;
+
+        int []dx = {0,0,1,-1};
+        int []dy = {1,-1,0,0};
+ 
+        while(!que.isEmpty()){
+            int size = que.size();
+
+            for(int i = 0; i < size; i++){
+                int[] points = que.poll();
+
+                for(int j =0; j < 4; j++){
+                    int x = points[0] + dx[j];
+                    int y = points[1] + dy[j];
+
+                    if(x < 0|| y < 0 || x >= rows || y>= cols || image[x][y] == color || image[x][y] != startcolor) continue;
+
+                    image[x][y] = color;
+                    que.offer(new int[]{x,y});
+                }
+            }
+        }
+        return image;
+    }
+}
