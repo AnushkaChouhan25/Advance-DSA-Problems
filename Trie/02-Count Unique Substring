@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+class Node {
+    Node[] children = new Node[26];
+}
+
+class Trie {
+    private Node root;
+
+    public Trie() {
+        root = new Node();
+    }
+
+    public void insert(String str) {
+        Node currentNode = root;
+        for (char c : str.toCharArray()) {
+            int index = c - 'a';
+            if (currentNode.children[index] == null) {
+                currentNode.children[index] = new Node();
+            }
+            currentNode = currentNode.children[index];
+        }
+    }
+
+    public int countNodes() {
+        return countNodes(root);
+    }
+
+    private int countNodes(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        int count = 1;  // Count the current node
+        for (Node child : node.children) {
+            count += countNodes(child);
+        }
+        return count;
+    }
+}
+
+public class DistinctSubstrings {
+    public static int countDistinctSubstrings(String S) {
+        Trie trie = new Trie();
+        for (int i = 0; i < S.length(); i++) {
+            trie.insert(S.substring(i));
+        }
+        return trie.countNodes();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the string: ");
+        String S = scanner.nextLine();
+        scanner.close();
+
+        int result = countDistinctSubstrings(S);
+        System.out.println("The number of distinct substrings including the empty substring is: " + result);
+    }
+}
